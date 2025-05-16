@@ -39,6 +39,15 @@ public class Quiz {
 //		}
 		
 		frame.add(jp);
+		
+		
+		
+	}
+	/*
+	 * hopefully graphically placing the quiz on a screen
+	 */
+	public void paint() {
+		
 	}
 
 	public static void main(String[] args) {
