@@ -63,10 +63,10 @@ public class Question {
 	@Override
 	public String toString() {
 	    return "Question: " + question + "\n"
-	         + "Hufflepuff Answer: " + huffAnswer + "\n"
-	         + "Gryffindor Answer: " + gryffAnswer + "\n"
-	         + "Ravenclaw Answer: " + ravenAnswer + "\n"
-	         + "Slytherin Answer: " + slythAnswer;
+	         + "A: " + huffAnswer + "\n"
+	         + "B: " + gryffAnswer + "\n"
+	         + "C: " + ravenAnswer + "\n"
+	         + "D: " + slythAnswer;
 	}
 
 	
