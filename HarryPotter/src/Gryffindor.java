@@ -7,8 +7,24 @@ public class Gryffindor extends House{
 	
 	public Gryffindor() {
 		super();
-		co = "idk what to put here";
+		co = "Brave";
 		g = Color.RED;
+	}
+
+	public String getCo() {
+		return co;
+	}
+
+	public void setCo(String co) {
+		this.co = co;
+	}
+
+	public Color getG() {
+		return g;
+	}
+
+	public void setG(Color g) {
+		this.g = g;
 	}
 	
 	

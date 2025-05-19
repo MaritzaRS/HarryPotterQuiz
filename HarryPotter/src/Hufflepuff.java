@@ -7,10 +7,24 @@ public class Hufflepuff extends House{
 	
 	public Hufflepuff() {
 		super();
-		co = "idk what to put here";
-		h = Color.PINK;
+		co = "Loyal";
+		h = Color.YELLOW;
 	}
-	
-	
+
+	public String getCo() {
+		return co;
+	}
+
+	public void setCo(String co) {
+		this.co = co;
+	}
+
+	public Color getH() {
+		return h;
+	}
+
+	public void setH(Color h) {
+		this.h = h;
+	}
 	
 }

@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 public class Quiz {
 	
-	JFrame frame;
+//	JFrame frame;
 	private static ArrayList<Question> question;
 	
 	public Quiz() {
@@ -17,8 +17,8 @@ public class Quiz {
 	}
 	
 	public void setup() {
-		frame.setBounds(100, 100, 100, 100);
-		frame.addMouseListener(null);
+//		frame.setBounds(100, 100, 100, 100);
+//		frame.addMouseListener(null);
 		//setupBoard();
 	}
 	

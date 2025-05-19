@@ -7,8 +7,24 @@ public class Slytherin extends House{
 	
 	public Slytherin() {
 		super();
-		co = "idk what to put here";
+		co = "AmbitiousS";
 		s = Color.GREEN;
+	}
+
+	public String getCo() {
+		return co;
+	}
+
+	public void setCo(String co) {
+		this.co = co;
+	}
+
+	public Color getS() {
+		return s;
+	}
+
+	public void setS(Color s) {
+		this.s = s;
 	}
 	
 	

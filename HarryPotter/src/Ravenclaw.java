@@ -7,8 +7,24 @@ public class Ravenclaw extends House{
 	
 	public Ravenclaw() {
 		super();
-		co = "studious";
+		co = "Wises";
 		r = Color.BLUE;
+	}
+
+	public String getCo() {
+		return co;
+	}
+
+	public void setCo(String co) {
+		this.co = co;
+	}
+
+	public Color getR() {
+		return r;
+	}
+
+	public void setR(Color r) {
+		this.r = r;
 	}
 	
 	
