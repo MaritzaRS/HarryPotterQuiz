@@ -1,20 +1,26 @@
 import java.awt.GridLayout;
 import java.util.ArrayList;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.util.Scanner;
 
 public class Quiz {
 	
-//	JFrame frame;
+  //JFrame frame;
 	private static ArrayList<Question> questionList;
+	private static ArrayList<String> answerList;
+	private static int hScore;
+	private static int gScore;
+	private static int rScore;
+	private static int sScore;
+
 	
 	public Quiz() {
 		questionList = new ArrayList<Question>();
-		
+		answerList = new ArrayList<String>();
 		setup();
 		
-		
+		//initialize questions
 		questionList.add(new Question("What is the result you are hoping for?", "Hufflepuff","Gryffindor","Ravenclaw","Slytherin"));
 		
 		questionList.add(new Question("If a classmate cheats on a test and tells you about it, what would you do?", "Do nothing","Learn how it’s done","Stop them if they try again, but don’t tell","Tell a teacher"));
@@ -29,11 +35,55 @@ public class Quiz {
 		
 		questionList.add(new Question("A Dark Wizard targets your family in your home. You know who they are, but the Ministry doesn’t believe you. What’s your next course of action?", "Revenge campaign to destroy their reputation","Hunt them down yourself","Ward your home with everything you know","Revenge campaign to destroy their reputation"));
 		
-		//debug
-		System.out.println(questionList.get(0).toString());
+		//debug toString();
+		//System.out.println(questionList.get(0).toString());
 		
 		
+		//show questions
+		Scanner scanner = new Scanner(System.in);
+		for(Question q : questionList) {
+	
+	        System.out.println(q.toString());
+	        String answer = scanner.nextLine();
+	        System.out.println("Your answer is: " + answer);
+	        answerList.add(answer);
+	        
+		}
+        scanner.close();
+        
+        //calculate points from answers
+		for(String a : answerList) {
+			
+			if(a.equalsIgnoreCase("a")) {
+				hScore++;
+			}else if(a.equalsIgnoreCase("b")) {
+				gScore++;
+			}else if(a.equalsIgnoreCase("c")) {
+				rScore++;
+			}else{
+				sScore++;
+			}
+	         
+		}
 		
+		//calculate which house has the highest points
+		int maxScore = Math.max(Math.max(hScore, gScore), Math.max(rScore, sScore));
+		String house = "";
+
+		if (hScore == maxScore) {
+		    house = "Hufflepuff";
+		} else if (gScore == maxScore) {
+		    house = "Gryffindor";
+		} else if (rScore == maxScore) {
+		    house = "Ravenclaw";
+		} else if (sScore == maxScore) {
+		    house = "Slytherin";
+		}
+		
+		
+		System.out.println("Your house is: " + house);
+
+
 		
 	}
 	
