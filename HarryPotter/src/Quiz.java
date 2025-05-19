@@ -7,12 +7,22 @@ import javax.swing.JPanel;
 public class Quiz {
 	
 //	JFrame frame;
-	private static ArrayList<Question> question;
+	private static ArrayList<Question> questionList;
 	
 	public Quiz() {
-		question = new ArrayList<Question>();
+		questionList = new ArrayList<Question>();
 		
 		setup();
+		
+		
+		questionList.add(new Question("What is the result you are hoping for?", "Hufflepuff","Gryffindor","Ravenclaw","Slytherin"));
+		
+		
+		//debug
+		System.out.println(questionList.get(0).toString());
+		
+		
+		
 		
 	}
 	

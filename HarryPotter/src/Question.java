@@ -60,5 +60,14 @@ public class Question {
 		this.slythAnswer = slythAnswer;
 	}
 	
+	@Override
+	public String toString() {
+	    return "Question: " + question + "\n"
+	         + "Hufflepuff Answer: " + huffAnswer + "\n"
+	         + "Gryffindor Answer: " + gryffAnswer + "\n"
+	         + "Ravenclaw Answer: " + ravenAnswer + "\n"
+	         + "Slytherin Answer: " + slythAnswer;
+	}
+
 	
 }
