@@ -2,8 +2,8 @@ import java.awt.Color;
 
 public class Slytherin extends House{
 	
-	private String co;
-	private Color s;
+	private static String co;
+	private static Color s;
 	
 	public Slytherin() {
 		super();
@@ -15,16 +15,16 @@ public class Slytherin extends House{
 		return co;
 	}
 
-	public void setCo(String co) {
-		this.co = co;
+	public static void setCo(String c) {
+		c = co;
 	}
 
 	public Color getS() {
 		return s;
 	}
 
-	public void setS(Color s) {
-		this.s = s;
+	public static void setS(Color sl) {
+		sl = s;
 	}
 	
 	
