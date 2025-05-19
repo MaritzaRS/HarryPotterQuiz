@@ -28,5 +28,4 @@ public class Slytherin extends House{
 	}
 	
 	
-	
 }

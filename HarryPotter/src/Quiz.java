@@ -1,5 +1,6 @@
 import java.awt.GridLayout;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -27,11 +28,12 @@ public class Quiz {
 		
 		questionList.add(new Question("What position do you play on the Quidditch Team?", "Chaser","Seeker","I’m not on the Quidditch Team","Beater"));
 		
-		questionList.add(new Question("A Dark Wizard targets your family in your home. You know who they are, but the Ministry doesn’t believe you. What’s your next course of action?", "Revenge campaign to destroy their reputation","Hunt them down yourself","Ward your home with everything you know","Revenge campaign to destroy their reputation"));
+		questionList.add(new Question("A Dark Wizard targets your family in your home. You know who they are, but the Ministry doesn’t believe you. What’s your next course of action?", "Secure undeniable evidence of their guilt and take it to the Ministry","Hunt them down yourself","Ward your home with everything you know","Revenge campaign to destroy their reputation"));
 		
 		//debug
 		System.out.println(questionList.get(0).toString());
 		
+		Scanner scanner = new Scanner(System.in);
 		
 		
 		
