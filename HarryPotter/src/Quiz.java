@@ -17,6 +17,17 @@ public class Quiz {
 		
 		questionList.add(new Question("What is the result you are hoping for?", "Hufflepuff","Gryffindor","Ravenclaw","Slytherin"));
 		
+		questionList.add(new Question("If a classmate cheats on a test and tells you about it, what would you do?", "Do nothing","Learn how it’s done","Stop them if they try again, but don’t tell","Tell a teacher"));
+		
+		questionList.add(new Question("You are told a secret that could ruin an acquaintance who’s about to run against you for a position of power. Who do you tell?", "Nobody","Use it against them openly","Tell them you know, but it will be kept safe","Spread it as an anonymous rumor"));
+		
+		questionList.add(new Question("If you were approached by a hostile mountain troll, what’s the first spell you are using?", "Spell? I’m running away","Wingardium Leviosa","Disillusionment Charm","Avada Kedavra"));
+		
+		questionList.add(new Question("Someone accuses you of a crime against the Student Code, but the punishment is only a couple of detentions and the actual culprit is your friend. How do you react?", "Defend yourself by turning the arguments back to the accuser","Firmly oppose the accusation, but not giving up your friend","Accept the detentions and move on","Accept the accusation in return for having a favor from the culprit"));
+		
+		questionList.add(new Question("What position do you play on the Quidditch Team?", "Chaser","Seeker","I’m not on the Quidditch Team","Beater"));
+		
+		questionList.add(new Question("A Dark Wizard targets your family in your home. You know who they are, but the Ministry doesn’t believe you. What’s your next course of action?", "Revenge campaign to destroy their reputation","Hunt them down yourself","Ward your home with everything you know","Revenge campaign to destroy their reputation"));
 		
 		//debug
 		System.out.println(questionList.get(0).toString());
