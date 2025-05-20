@@ -13,7 +13,7 @@ public class Quiz {
 	public Quiz() {
 		questionList = new ArrayList<Question>();
 		
-		setup();
+		
 		
 		
 		questionList.add(new Question("What is the result you are hoping for?", "Hufflepuff","Gryffindor","Ravenclaw","Slytherin"));
@@ -31,7 +31,9 @@ public class Quiz {
 		questionList.add(new Question("A Dark Wizard targets your family in your home. You know who they are, but the Ministry doesn’t believe you. What’s your next course of action?", "Secure undeniable evidence of their guilt and take it to the Ministry","Hunt them down yourself","Ward your home with everything you know","Revenge campaign to destroy their reputation"));
 		
 		//debug
-		System.out.println(questionList.get(0).toString());
+		//System.out.println(questionList.get(0).toString());
+		setup();
+		
 		
 		Scanner scanner = new Scanner(System.in);
 		
@@ -43,6 +45,8 @@ public class Quiz {
 //		frame.setBounds(100, 100, 100, 100);
 //		frame.addMouseListener(null);
 		//setupBoard();
+		
+		System.out.println(questionList.getFirst().getQuestion());
 	}
 	
 //	public void setupBoard() {
