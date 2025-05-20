@@ -4,11 +4,21 @@ public class Slytherin extends House{
 	
 	private static String co;
 	private static Color s;
+	private static Color second;
 	
 	public Slytherin() {
 		super();
-		co = "AmbitiousS";
+		co = "Ambitious";
 		s = Color.GREEN;
+		second = Color.LIGHT_GRAY;
+	}
+
+	public static Color getSecond() {
+		return second;
+	}
+
+	public static void setSecond(Color second) {
+		Slytherin.second = second;
 	}
 
 	public String getCo() {
