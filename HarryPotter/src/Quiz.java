@@ -82,7 +82,6 @@ public class Quiz {
 		
 		
 		System.out.println("Your house is: " + house);
-
 		
 	}
 	
