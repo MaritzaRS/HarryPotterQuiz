@@ -158,8 +158,6 @@ public class Quiz extends JPanel{
 		System.out.println("Slytherin: " + sScore + "%");
 		
 		
-		
-		
 		System.out.println("The percentage of each houses' ideals inside of you are: ");
 		System.out.println("Hufflepuff: " + (double)(hScore * 1.0)/(gScore+rScore+sScore)*100 + "%");
 		System.out.println("Gryffindor: " + (double)(gScore*1.0)/(hScore+rScore+sScore)*100 + "%");
