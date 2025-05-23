@@ -45,11 +45,9 @@ public class Quiz extends JPanel{
 		questionList.add(new Question("A Dark Wizard targets your family in your home. You know who they are, but the Ministry doesn’t believe you. "
 				+ "What’s your next course of action?", "Secure undeniable evidence of their guilt and take it to the Ministry","Hunt them down yourself",
 				"Ward your home with everything you know","Revenge campaign to destroy their reputation"));
-		/*
-		 * Need to finish the Hufflepuff answer
-		 */
-		questionList.add(new Question("Which of these magical events would you most want to go to?", "","Quidditch World Cup","Yule Ball","Triwizard Tournament"));
-
+		
+		questionList.add(new Question("Which of these magical events would you most want to go to?", "Christmas at Hogwarts","Quidditch World Cup",
+				"Yule Ball","Triwizard Tournament"));
 		
 		questionList.add(new Question("Which word would hurt you the most should you be insulted?", "Useless","Weak","Stupid","Ungrateful"));
 		
@@ -86,6 +84,7 @@ public class Quiz extends JPanel{
 		questionList.add(new Question("Which position of power would you most rather have?", "A homemaker, religious leader, a manager, guiding the community",
 				"A spy, militant, activist, taking action","A head researcher, librarian, teacher, dealing with knowledge","A ruler, president, lawyer, top of the food chain"));
 		
+		questionList.add(new Question("If you could master one magical subject, which would it be?", "Transfiguration", "Duelling", "Ancient Runes", "Potions"));
 		
 		//debug toString();
 		//System.out.println(questionList.get(0).toString());
@@ -159,62 +158,61 @@ public class Quiz extends JPanel{
 		g.setFont(getFont());
 		
 		
-		Scanner scanner = new Scanner(System.in);
-		for(Question q : questionList) {
-	
-	        System.out.println(q.toString());
-	        String answer = scanner.nextLine();
-	        System.out.println("Your answer is: " + answer);
-	        answerList.add(answer);
-	        
-		}
-        scanner.close();
-        
-        //calculate points from answers
-		for(String a : answerList) {
-			
-			if(a.equalsIgnoreCase("a")) {
-				hScore++;
-			}else if(a.equalsIgnoreCase("b")) {
-				gScore++;
-			}else if(a.equalsIgnoreCase("c")) {
-				rScore++;
-			}else{
-				sScore++;
-			}
-	         
-		}
-		
-		//calculate which house has the highest points
-		int maxScore = Math.max(Math.max(hScore, gScore), Math.max(rScore, sScore));
-		String house = "";
-
-		if (hScore == maxScore) {
-		    house = "Hufflepuff";
-		} else if (gScore == maxScore) {
-		    house = "Gryffindor";
-		} else if (rScore == maxScore) {
-		    house = "Ravenclaw";
-		} else if (sScore == maxScore) {
-		    house = "Slytherin";
-		}
-		
-		System.out.println();
-		/*
-		System.out.println("Your house is: " + house);
-		System.out.println("Percentages: ");
-		System.out.println("Hufflepuff: " + hScore + "%");
-		System.out.println("Gryffindor: "+ gScore + "%");
-		System.out.println("Ravenclaw: " + rScore + "%");
-		System.out.println("Slytherin: " + sScore + "%");
-		*/
-		//^^^ isnt actually a percent and goes well over one hundred. 
-		
-		System.out.println("The percentage of each houses' ideals inside of you are: ");
-		System.out.println("Hufflepuff: " + (double)(hScore * 1.0)/(gScore+rScore+sScore)*100 + "%");
-		System.out.println("Gryffindor: " + (double)(gScore*1.0)/(hScore+rScore+sScore)*100 + "%");
-		System.out.println("Ravenclaw: " + (double)(rScore*1.0)/(gScore+hScore+sScore)*100 + "%");
-		System.out.println("Slytherin: " + (double)(sScore*1.0)/(gScore+rScore+hScore)*100 + "%");
+//		Scanner scanner = new Scanner(System.in);
+//		for(Question q : questionList) {
+//	
+//	        System.out.println(q.toString());
+//	        String answer = scanner.nextLine();
+//	        System.out.println("Your answer is: " + answer);
+//	        answerList.add(answer);
+//	        
+//		}
+//        scanner.close();
+//        
+//        //calculate points from answers
+//		for(String a : answerList) {
+//			
+//			if(a.equalsIgnoreCase("a")) {
+//				hScore++;
+//			}else if(a.equalsIgnoreCase("b")) {
+//				gScore++;
+//			}else if(a.equalsIgnoreCase("c")) {
+//				rScore++;
+//			}else{
+//				sScore++;
+//			}
+//		}
+//		
+//		//calculate which house has the highest points
+//		int maxScore = Math.max(Math.max(hScore, gScore), Math.max(rScore, sScore));
+//		String house = "";
+//
+//		if (hScore == maxScore) {
+//		    house = "Hufflepuff";
+//		} else if (gScore == maxScore) {
+//		    house = "Gryffindor";
+//		} else if (rScore == maxScore) {
+//		    house = "Ravenclaw";
+//		} else if (sScore == maxScore) {
+//		    house = "Slytherin";
+//		}
+//		
+//		System.out.println();
+//		/*
+//		System.out.println("Your house is: " + house);
+//		System.out.println("Percentages: ");
+//		System.out.println("Hufflepuff: " + hScore + "%");
+//		System.out.println("Gryffindor: "+ gScore + "%");
+//		System.out.println("Ravenclaw: " + rScore + "%");
+//		System.out.println("Slytherin: " + sScore + "%");
+//		*/
+//		//^^^ isnt actually a percent and goes well over one hundred. 
+//		
+//		System.out.println("The percentage of each houses' ideals inside of you are: ");
+//		System.out.println("Hufflepuff: " + (double)(hScore * 1.0)/(gScore+rScore+sScore)*100 + "%");
+//		System.out.println("Gryffindor: " + (double)(gScore*1.0)/(hScore+rScore+sScore)*100 + "%");
+//		System.out.println("Ravenclaw: " + (double)(rScore*1.0)/(gScore+hScore+sScore)*100 + "%");
+//		System.out.println("Slytherin: " + (double)(sScore*1.0)/(gScore+rScore+hScore)*100 + "%");
 		
 	}
 	
