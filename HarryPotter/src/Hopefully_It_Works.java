@@ -26,10 +26,10 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	int score1 = 0;
 	Font myFont = new Font("Courier", Font.BOLD, 40);
 	
-	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
-	SimpleAudioPlayer SadMusic = new SimpleAudioPlayer("SadMusic2.wav", false);
-	SimpleAudioPlayer winner = new SimpleAudioPlayer("scifi.wav", false);
-	
+//	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
+//	SimpleAudioPlayer SadMusic = new SimpleAudioPlayer("SadMusic2.wav", false);
+//	SimpleAudioPlayer winner = new SimpleAudioPlayer("scifi.wav", false);
+//	
 	//frame width/height
 	static int width = 600;
 	static int height = 800;	
@@ -68,7 +68,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	
 	
 	public Hopefully_It_Works() {
-		JFrame f = new JFrame("Duck Hunt");
+		JFrame f = new JFrame("Harry Potter Quiz");
 		f.setSize(new Dimension(width, height));
 		f.setBackground(Color.white);
 		f.add(this);
@@ -80,6 +80,9 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 //			reset();
 //		}
 		//backgroundMusic.play();
+		
+//		Quiz quiz = new Quiz();
+//		quiz.painted();
 		
 		//the cursor image must be outside of the src folder
 		//you will need to import a couple of classes to make it fully 

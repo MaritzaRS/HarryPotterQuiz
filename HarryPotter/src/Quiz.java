@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -156,7 +158,12 @@ public class Quiz extends JPanel{
 	public void paint(Graphics g) {
 		super.paintComponent(g);
 		g.setFont(getFont());
-		
+//		f.setSize(new Dimension(width, height));
+//		f.setBackground(Color.white);
+//		f.add(this);
+//		f.setResizable(false);
+// 		f.addMouseListener(this);
+//		f.addKeyListener(this);
 		
 //		Scanner scanner = new Scanner(System.in);
 //		for(Question q : questionList) {
@@ -240,7 +247,66 @@ public class Quiz extends JPanel{
 //		
 //	}
 	
+	public void painted() {
+		Scanner scanner = new Scanner(System.in);
+		for(Question q : questionList) {
+			
+		
+	        System.out.println(q.toString());
+	        String answer = scanner.nextLine();
+	        System.out.println("Your answer is: " + answer);
+	        answerList.add(answer);
+	        
+		}
+        scanner.close();
+        
+        //calculate points from answers
+		for(String a : answerList) {
+			
+			if(a.equalsIgnoreCase("a")) {
+				hScore++;
+			}else if(a.equalsIgnoreCase("b")) {
+				gScore++;
+			}else if(a.equalsIgnoreCase("c")) {
+				rScore++;
+			}else{
+				sScore++;
+			}
+		}
+		
+		//calculate which house has the highest points
+		int maxScore = Math.max(Math.max(hScore, gScore), Math.max(rScore, sScore));
+		String house = "";
 
+		if (hScore == maxScore) {
+		    house = "Hufflepuff";
+		} else if (gScore == maxScore) {
+		    house = "Gryffindor";
+		} else if (rScore == maxScore) {
+		    house = "Ravenclaw";
+		} else if (sScore == maxScore) {
+		    house = "Slytherin";
+		}
+		
+		System.out.println();
+		/*
+		System.out.println("Your house is: " + house);
+//		System.out.println("Percentages: ");
+//		System.out.println("Hufflepuff: " + hScore + "%");
+//		System.out.println("Gryffindor: "+ gScore + "%");
+//		System.out.println("Ravenclaw: " + rScore + "%");
+//		System.out.println("Slytherin: " + sScore + "%");
+//		*/
+//		//^^^ isnt actually a percent and goes well over one hundred. 
+//		
+		System.out.println("The percentage of each houses' ideals inside of you are: ");
+		System.out.println("Hufflepuff: " + (double)(hScore * 1.0)/(gScore+rScore+sScore)*100 + "%");
+		System.out.println("Gryffindor: " + (double)(gScore*1.0)/(hScore+rScore+sScore)*100 + "%");
+		System.out.println("Ravenclaw: " + (double)(rScore*1.0)/(gScore+hScore+sScore)*100 + "%");
+		System.out.println("Slytherin: " + (double)(sScore*1.0)/(gScore+rScore+hScore)*100 + "%");
+		
+	
+	}
 	public static void main(String[] args) {
 		
 		new Quiz();
