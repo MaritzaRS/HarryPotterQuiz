@@ -28,6 +28,11 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	int score1 = 0;
 	Font myFont = new Font("Courier", Font.BOLD, 40);
 	
+	int currentQuestionIndex = 0;
+	ArrayList<String> chosenAnswers = new ArrayList<>();
+
+
+	
 	
 	private static ArrayList<Question> questionList;
 	private static ArrayList<String> answerList;
@@ -35,6 +40,8 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	private static int gScore;
 	private static int rScore;
 	private static int sScore;
+	private boolean showHitboxes = false;
+
 	
 	
 //	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
@@ -42,41 +49,53 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 //	SimpleAudioPlayer winner = new SimpleAudioPlayer("scifi.wav", false);
 //	
 	//frame width/height
-	static int width = 600;
+	static int width = 1200;
 	static int height = 800;	
 	
 
 	public void paint(Graphics g) {
-		super.paintComponent(g);
-//		g.fillRect(0, 0, width, height);
-//		backgroundMusic.play();
-//		back.paint(g);
-//		maze.paint(g);
-		g.setFont(myFont);
-		g.setColor(Color.black);
-//		g.drawString(score1+"", 500, 50);
-		
-//		for(Question q : questionList) {
-			g.drawString("Question: ", 300, 300);
-	        g.drawString(questionList.get(0).getQuestion(), 100, 300);
-	        g.drawRect(140, 340, 60, 40);
-	        g.drawString(questionList.get(0).getHuffAnswer(), 60, 60);
-//	        String answer = scanner.nextLine();
-//	        System.out.println("Your answer is: ");
-//	        answerList.add(answer);
+	    super.paint(g);
+
+	    if (currentQuestionIndex < questionList.size()) {
+	        Question q = questionList.get(currentQuestionIndex);
 	        
-	        /*
-	         * In order for the person to click on the answer boxes, we need the MouseListener class
-	         * And then from there, we need to find another way to add to the answerList 
-	         * for the calculations to remain in place
-	         */
-//	        g.clearRect(0, 0, width, height);
+	        g.setFont(new Font("Arial", Font.BOLD, 20));
+	        g.drawString("Question " + (currentQuestionIndex + 1) + " of " + questionList.size(), 100, 70);
 	        
+	        g.setFont(new Font("Arial", Font.PLAIN, 24));
+	        g.drawString(q.getQuestion(), 100, 120);
+
+	        g.drawRect(100, 150, 800, 50);
+	        g.drawString(q.getHuffAnswer(), 110, 185);
 	        
-//		}
-		
-		
+	        g.drawRect(100, 220, 800, 50);
+	        g.drawString(q.getGryffAnswer(), 110, 255);
+
+	        g.drawRect(100, 290, 800, 50);
+	        g.drawString(q.getRavenAnswer(), 110, 325);
+
+	        g.drawRect(100, 360, 800, 50);
+	        g.drawString(q.getSlythAnswer(), 110, 395);
+	    } else {
+	        g.setFont(new Font("Arial", Font.BOLD, 30));
+	        g.drawString("Quiz Complete!", 100, 100);
+	        
+	        int total = hScore + gScore + rScore + sScore;
+	        if (total > 0) {
+	            g.drawString("Hufflepuff: " + (hScore * 100 / total) + "%", 100, 150);
+	            g.drawString("Gryffindor: " + (gScore * 100 / total) + "%", 100, 200);
+	            g.drawString("Ravenclaw: " + (rScore * 100 / total) + "%", 100, 250);
+	            g.drawString("Slytherin: " + (sScore * 100 / total) + "%", 100, 300);
+	        }
+	    }
 	}
+
+	
+	private boolean isInBox(int mx, int my, int x, int y, int w, int h) {
+	    return mx >= x && mx <= x + w && my >= y && my <= y + h;
+	}
+
+
 	
 	public void reset() {
 //		mouse.setVx(0);
@@ -191,15 +210,15 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		//the cursor image must be outside of the src folder
 		//you will need to import a couple of classes to make it fully 
 		//functional! use eclipse quick-fixes
-		setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
-				new ImageIcon("torch.png").getImage(),
-				new Point(0,0),"custom cursor"));	
+
 		
 		
 		Timer t = new Timer(16, this);
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
+	
+
 	}
 	
 	
@@ -223,10 +242,36 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	@Override
 	public void mousePressed(MouseEvent m) {
-		
-	
-		
+	    int mx = m.getX();
+	    int my = m.getY();
+
+	    if (currentQuestionIndex >= questionList.size()) return;
+
+	    Question q = questionList.get(currentQuestionIndex);
+	    String selected = "";
+
+	    if (isInBox(mx, my, 100, 150, 800, 50)) {
+	        hScore++;
+	        selected = "Hufflepuff";
+	    } else if (isInBox(mx, my, 100, 220, 800, 50)) {
+	        gScore++;
+	        selected = "Gryffindor";
+	    } else if (isInBox(mx, my, 100, 290, 800, 50)) {
+	        rScore++;
+	        selected = "Ravenclaw";
+	    } else if (isInBox(mx, my, 100, 360, 800, 50)) {
+	        sScore++;
+	        selected = "Slytherin";
+	    }
+
+	    if (!selected.equals("")) {
+	        chosenAnswers.add(selected);
+	        currentQuestionIndex++;
+	        repaint();
+	    }
 	}
+
+
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
@@ -241,27 +286,11 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	}
 
 	@Override
-	public void keyPressed(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		System.out.println(arg0.getKeyCode());
-		
-//		if (arg0.getKeyCode() == 38) {
-//			mouse.move(0);
-//		} else if (arg0.getKeyCode() == 40) {
-//			mouse.move(1);
-//		} else if (arg0.getKeyCode() == 37) {
-//			mouse.move(2);
-//		} else if (arg0.getKeyCode() == 39) {
-//			mouse.move(3);
-//		}
-//		
-//		while (heart.size() == 0) {
-//			if (arg0.getKeyCode() == 32) {
-//				reset();
-//			}
-//		}
-		
-		
+	public void keyPressed(KeyEvent e) {
+	    if (e.getKeyCode() == KeyEvent.VK_F1) {
+	        showHitboxes = !showHitboxes;
+	        repaint(); // refresh the screen to show/hide hitboxes
+	    }
 	}
 
 	@Override
@@ -275,5 +304,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		// TODO Auto-generated method stub
 		
 	}
+	
 
 }
