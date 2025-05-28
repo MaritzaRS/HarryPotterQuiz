@@ -198,14 +198,19 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		
+		//can use this one for the actual clicking
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+//		if (agr0) {
+//			
+//		}
+		/*
+		 * Could use this one to create a highlighting effect for when 
+		 * we actually get he code working, like with chess
+		 */
 	}
 
 	@Override
@@ -234,7 +239,9 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		/*
+		 * probably using this one instead of mousePressed
+		 */
 	}
 
 	@Override
