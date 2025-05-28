@@ -48,6 +48,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	public void paint(Graphics g) {
 		super.paintComponent(g);
+//		g.fillRect(0, 0, width, height);
 //		backgroundMusic.play();
 //		back.paint(g);
 //		maze.paint(g);
@@ -55,11 +56,11 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		g.setColor(Color.black);
 //		g.drawString(score1+"", 500, 50);
 		
-		for(Question q : questionList) {
-	
-	        g.drawString(q.getQuestion(), 100, 50);
+//		for(Question q : questionList) {
+			g.drawString("Question: ", 300, 300);
+	        g.drawString(questionList.get(0).getQuestion(), 100, 300);
 	        g.drawRect(140, 340, 60, 40);
-	        g.drawString(q.toString(), 60, 60);
+	        g.drawString(questionList.get(0).getHuffAnswer(), 60, 60);
 //	        String answer = scanner.nextLine();
 //	        System.out.println("Your answer is: ");
 //	        answerList.add(answer);
@@ -69,7 +70,10 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	         * And then from there, we need to find another way to add to the answerList 
 	         * for the calculations to remain in place
 	         */
-		}
+//	        g.clearRect(0, 0, width, height);
+	        
+	        
+//		}
 		
 		
         
@@ -126,6 +130,8 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 //			System.out.print(" GAME OVER ");
 //			
 //		}
+		
+		
 	}
 	
 	public static void main(String[] arg) {
