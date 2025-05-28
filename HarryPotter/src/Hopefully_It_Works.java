@@ -76,46 +76,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 //		}
 		
 		
-        
-        //calculate points from answers
-		for(String a : answerList) {
-			
-			if(a.equalsIgnoreCase("a")) {
-				hScore++;
-			}else if(a.equalsIgnoreCase("b")) {
-				gScore++;
-			}else if(a.equalsIgnoreCase("c")) {
-				rScore++;
-			}else{
-				sScore++;
-			}
-	         
-		}
-		
-		//calculate which house has the highest points
-		int maxScore = Math.max(Math.max(hScore, gScore), Math.max(rScore, sScore));
-		String house = "";
-
-		if (hScore == maxScore) {
-		    house = "Hufflepuff";
-		} else if (gScore == maxScore) {
-		    house = "Gryffindor";
-		} else if (rScore == maxScore) {
-		    house = "Ravenclaw";
-		} else if (sScore == maxScore) {
-		    house = "Slytherin";
-		}
-		
-		System.out.println();
-		System.out.println("Your house is: " + house);
-		
-		
-		System.out.println("The percentage of each houses' ideals inside of you are: ");
-		System.out.println("Hufflepuff: " + (double)(hScore * 1.0)/(gScore+rScore+sScore)*100 + "%");
-		System.out.println("Gryffindor: " + (double)(gScore*1.0)/(hScore+rScore+sScore)*100 + "%");
-		System.out.println("Ravenclaw: " + (double)(rScore*1.0)/(gScore+hScore+sScore)*100 + "%");
-		System.out.println("Slytherin: " + (double)(sScore*1.0)/(gScore+rScore+hScore)*100 + "%");
-		
 	}
 	
 	public void reset() {
