@@ -143,11 +143,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 //		if (mouse.getX() > Frame.width) {
 //			reset();
 //		}
-		//backgroundMusic.play();
-		
-//		Quiz quiz = new Quiz();
-//		quiz.painted();
-		
 		
 		questionList = new ArrayList<Question>();
 		answerList = new ArrayList<String>();
@@ -222,8 +217,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		/*
 		 * I moved the display of the questions to the paint method.
 		 */
-		
-		
 		
 		//the cursor image must be outside of the src folder
 		//you will need to import a couple of classes to make it fully 
