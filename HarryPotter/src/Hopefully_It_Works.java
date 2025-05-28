@@ -38,9 +38,8 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	
 	
 //	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
-//	SimpleAudioPlayer SadMusic = new SimpleAudioPlayer("SadMusic2.wav", false);
-//	SimpleAudioPlayer winner = new SimpleAudioPlayer("scifi.wav", false);
-//	
+	
+	
 	//frame width/height
 	static int width = 600;
 	static int height = 800;	
@@ -181,12 +180,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		
 		questionList.add(new Question("If you could master one magical subject, which would it be?", "Transfiguration", "Duelling", "Ancient Runes", "Potions"));
 		
-		//debug toString();
-		//System.out.println(questionList.get(0).toString());
-		
-		/*
-		 * I moved the display of the questions to the paint method.
-		 */
 		
 		//the cursor image must be outside of the src folder
 		//you will need to import a couple of classes to make it fully 
@@ -205,7 +198,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
@@ -222,9 +215,19 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	}
 
 	@Override
-	public void mousePressed(MouseEvent m) {
+	public void mousePressed(MouseEvent agr0) {
 		
-	
+		System.out.println(agr0.getX());
+		
+//		if (agr0.BUTTON1 == agr0.BUTTON1_DOWN_MASK) {
+//			hScore++;
+//		} else if () {
+//			gScore++;
+//		} else if () {
+//			rScore++;
+//		} else if () {
+//			sScore++;
+//		}
 		
 	}
 
@@ -244,16 +247,18 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		System.out.println(arg0.getKeyCode());
-		
-//		if (arg0.getKeyCode() == 38) {
-//			mouse.move(0);
-//		} else if (arg0.getKeyCode() == 40) {
-//			mouse.move(1);
-//		} else if (arg0.getKeyCode() == 37) {
-//			mouse.move(2);
-//		} else if (arg0.getKeyCode() == 39) {
-//			mouse.move(3);
-//		}
+		/*
+		 * Hopefully for people who prefer to use the keyboard
+		 */
+		if (arg0.getKeyCode() == 4) {
+			answerList.add(null);
+		} else if (arg0.getKeyCode() == 5) {
+			answerList.add(null);
+		} else if (arg0.getKeyCode() == 6) {
+			answerList.add(null);
+		} else if (arg0.getKeyCode() == 7) {
+			answerList.add(null);
+		}
 //		
 //		while (heart.size() == 0) {
 //			if (arg0.getKeyCode() == 32) {
