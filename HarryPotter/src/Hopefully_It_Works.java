@@ -54,20 +54,24 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		g.setFont(myFont);
 		g.setColor(Color.black);
 //		g.drawString(score1+"", 500, 50);
-		Scanner scanner = new Scanner(System.in);
+		
 		for(Question q : questionList) {
 	
 	        g.drawString(q.getQuestion(), 100, 50);
+	        g.drawRect(140, 340, 60, 40);
+	        g.drawString(q.toString(), 60, 60);
+//	        String answer = scanner.nextLine();
+//	        System.out.println("Your answer is: ");
+//	        answerList.add(answer);
 	        
-	        
-	        String answer = scanner.nextLine();
-	        System.out.println("Your answer is: " + answer);
-	        answerList.add(answer);
-	        
+	        /*
+	         * In order for the person to click on the answer boxes, we need the MouseListener class
+	         * And then from there, we need to find another way to add to the answerList 
+	         * for the calculations to remain in place
+	         */
 		}
 		
 		
-        scanner.close();
         
         //calculate points from answers
 		for(String a : answerList) {
