@@ -31,7 +31,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	int currentQuestionIndex = 0;
 	ArrayList<String> chosenAnswers = new ArrayList<>();
 
-
+	Wand wand = new Wand(200, 200);
 	
 	
 	private static ArrayList<Question> questionList;
@@ -54,17 +54,20 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	
 
 	public void paint(Graphics g) {
-	    super.paint(g);
+	    super.paintComponent(g);
+	    
+//	    wand.paint(g);
 
 	    if (currentQuestionIndex < questionList.size()) {
 	        Question q = questionList.get(currentQuestionIndex);
 	        
-	        g.setFont(new Font("Arial", Font.BOLD, 20));
+	        g.setFont(new Font("Cambria", Font.BOLD, 20));
 	        g.drawString("Question " + (currentQuestionIndex + 1) + " of " + questionList.size(), 100, 70);
 	        
-	        g.setFont(new Font("Arial", Font.PLAIN, 24));
+	        g.setFont(new Font("Cambria", Font.PLAIN, 24));
 	        g.drawString(q.getQuestion(), 100, 120);
-
+	        
+	        
 	        g.drawRect(100, 150, 800, 50);
 	        g.drawString(q.getHuffAnswer(), 110, 185);
 	        
@@ -77,7 +80,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        g.drawRect(100, 360, 800, 50);
 	        g.drawString(q.getSlythAnswer(), 110, 395);
 	    } else {
-	        g.setFont(new Font("Arial", Font.BOLD, 30));
+	        g.setFont(new Font("Cambria", Font.BOLD, 30));
 	        g.drawString("Quiz Complete!", 100, 100);
 	        
 	        int total = hScore + gScore + rScore + sScore;
@@ -94,24 +97,8 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	private boolean isInBox(int mx, int my, int x, int y, int w, int h) {
 	    return mx >= x && mx <= x + w && my >= y && my <= y + h;
 	}
-
-
 	
-	public void reset() {
-//		mouse.setVx(0);
-//		mouse.x = 280;
-//		mouse.y = 700;
-//		
-//		//loss of life
-//		if (heart.size() > 0) {
-//			heart.remove(0);
-//		} else {
-//			System.out.print(" GAME OVER ");
-//			
-//		}
-		
-		
-	}
+	
 	
 	public static void main(String[] arg) {
 		Hopefully_It_Works f = new Hopefully_It_Works();
@@ -230,8 +217,16 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
+//		boolean temp = false;
+//	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
+//	        
+//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
+//	        
+//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
+//	        
+//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
+//	        
+//	    }
 	}
 
 	@Override
