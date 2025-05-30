@@ -31,11 +31,18 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	int currentQuestionIndex = 0;
 	ArrayList<String> chosenAnswers = new ArrayList<>();
 
-	Wand wand = new Wand(200, 200);
+	//Wand wand = new Wand(200, 200);
 	
+	/*
+	 * Notes:
+	 * The mouseListener method looks like it has a delay in actually clicking 
+	 * on an answer. It takes about two to ten clicks for me to answer a question.
+	 * Also, need to figure out a way to actually get some images on to the screen
+	 * 
+	 */
 	
 	private static ArrayList<Question> questionList;
-	private static ArrayList<String> answerList;
+	//private static ArrayList<String> answerList;
 	private static int hScore;
 	private static int gScore;
 	private static int rScore;
@@ -45,9 +52,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	
 	
 //	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
-//	SimpleAudioPlayer SadMusic = new SimpleAudioPlayer("SadMusic2.wav", false);
-//	SimpleAudioPlayer winner = new SimpleAudioPlayer("scifi.wav", false);
-//	
+	
 	//frame width/height
 	static int width = 1200;
 	static int height = 800;	
@@ -71,6 +76,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        g.drawRect(100, 150, 800, 50);
 	        g.drawString(q.getHuffAnswer(), 110, 185);
 	        
+	        
 	        g.drawRect(100, 220, 800, 50);
 	        g.drawString(q.getGryffAnswer(), 110, 255);
 
@@ -93,19 +99,14 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	    }
 	}
 
-	
 	private boolean isInBox(int mx, int my, int x, int y, int w, int h) {
 	    return mx >= x && mx <= x + w && my >= y && my <= y + h;
 	}
-	
-	
 	
 	public static void main(String[] arg) {
 		Hopefully_It_Works f = new Hopefully_It_Works();
 		
 	}
-	
-	
 	
 	public Hopefully_It_Works() {
 		JFrame f = new JFrame("Harry Potter Quiz");
@@ -116,12 +117,9 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
  		f.addMouseListener(this);
 		f.addKeyListener(this);
 		
-//		if (mouse.getX() > Frame.width) {
-//			reset();
-//		}
 		
 		questionList = new ArrayList<Question>();
-		answerList = new ArrayList<String>();
+		//answerList = new ArrayList<String>();
 		
 		
 		//initialize questions 20, 5 points each
@@ -208,6 +206,15 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	}
 	
+	public boolean highlightBoxes(boolean temp, int x, int y, int w, int h) {
+		/*
+		 * Intended to help the mouseEntered and mouseExited methods to highlight 
+		 * the intended answer. Not working properly, and cannot problem 
+		 * solve to save my life
+		 */
+		return temp;
+	}
+	
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
@@ -217,16 +224,20 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-//		boolean temp = false;
-//	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
-//	        
-//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
-//	        
-//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
-//	        
-//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
-//	        
-//	    }
+		boolean temp = false;
+	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
+	    	arg0.getButton();
+	        highlightBoxes(true, 100, 150, 800, 50);
+	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
+	    	arg0.getComponent().setBackground(Color.yellow);
+	        highlightBoxes(true, 100, 220, 800, 50);
+	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
+	    	arg0.getComponent().setBackground(Color.yellow);
+	        highlightBoxes(true, 100, 290, 800, 50);
+	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
+	    	arg0.getComponent().setBackground(Color.yellow);
+	        highlightBoxes(true, 100, 360, 800, 50);
+	    }
 	}
 
 	@Override
@@ -270,7 +281,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
