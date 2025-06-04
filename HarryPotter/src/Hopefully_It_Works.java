@@ -70,23 +70,46 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        g.drawString("Question " + (currentQuestionIndex + 1) + " of " + questionList.size(), 100, 70);
 	        
 	        g.setFont(new Font("Cambria", Font.PLAIN, 24));
-	        g.drawString(q.getQuestion(), 100, 120);
 	        
-	        
-	        g.drawRect(100, 150, 800, 50);
-	        g.drawString(q.getHuffAnswer(), 110, 185);
-	        
-	        
-	        g.drawRect(100, 220, 800, 50);
-	        g.drawString(q.getGryffAnswer(), 110, 255);
+	        if (q.getQuestion().length() < 85) {
+	        	
+		        g.drawString(q.getQuestion(), 100, 120);
+		        
+	        } else {
+	        	if (q.getQuestion().substring(85, 86).equals(" ")) {
 
-	        g.drawRect(100, 290, 800, 50);
-	        g.drawString(q.getRavenAnswer(), 110, 325);
+		        	g.drawString(q.getQuestion().substring(0, 85), 100, 120);
+		        	g.drawString(q.getQuestion().substring(86, q.getQuestion().length()), 100, 150);
+		        	
+	        	} else {
+	        		for (int i = 85; i < q.getQuestion().length(); i++) {
+	        			if (q.getQuestion().substring(i, i+1).equals(" ")) {
+	        				
+	        				g.drawString(q.getQuestion().substring(0, i), 100, 120);
+	        				g.drawString(q.getQuestion().substring(i+1, q.getQuestion().length()), 100, 150);
+	        				break;
+	        			}
+	        		}
+	        	}
+	        }
+	        
+	        g.drawRect(100, 170, 800, 50);
+	        g.drawString(q.getHuffAnswer(), 110, 205);
+	        
+	        
+	        g.drawRect(100, 240, 800, 50);
+	        g.drawString(q.getGryffAnswer(), 110, 275);
 
-	        g.drawRect(100, 360, 800, 50);
-	        g.drawString(q.getSlythAnswer(), 110, 395);
+	        g.drawRect(100, 310, 800, 50);
+	        g.drawString(q.getRavenAnswer(), 110, 345);
+
+	        g.drawRect(100, 380, 800, 50);
+	        g.drawString(q.getSlythAnswer(), 110, 415);
+	        
+	        
 	    } else {
-	        g.setFont(new Font("Cambria", Font.BOLD, 30));
+	        g.setFont(new Font("Cursive", Font.BOLD, 30));
+	        g.setColor(Color.MAGENTA);
 	        g.drawString("Quiz Complete!", 100, 100);
 	        
 	        int total = hScore + gScore + rScore + sScore;
@@ -131,7 +154,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		questionList.add(new Question("You are told a secret that could ruin an acquaintance who’s about to run against you for a position of power. "
 				+ "Who do you tell?", "Nobody","Use it against them openly","Tell them you know, but it will be kept safe","Spread it as an anonymous rumor"));
 		
-		questionList.add(new Question("If you were approached by a hostile mountain troll, what’s the first spell you are using?", 
+		questionList.add(new Question("If you were approached by a hostile mountain troll, what’s the first spell you are using?   ", 
 				"Spell? I’m running away","Wingardium Leviosa","Disillusionment Charm","Avada Kedavra"));
 		
 		questionList.add(new Question("Someone accuses you of a crime against the Student Code, but the punishment is only a couple of detentions and the actual culprit is your friend. "
@@ -226,16 +249,16 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	public void mouseEntered(MouseEvent arg0) {
 		boolean temp = false;
 	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
-	    	arg0.getButton();
+//	    	arg0.getButton();
 	        highlightBoxes(true, 100, 150, 800, 50);
 	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
-	    	arg0.getComponent().setBackground(Color.yellow);
+//	    	arg0.;
 	        highlightBoxes(true, 100, 220, 800, 50);
 	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
-	    	arg0.getComponent().setBackground(Color.yellow);
+//	    	arg0.getComponent().setBackground(Color.yellow);
 	        highlightBoxes(true, 100, 290, 800, 50);
 	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
-	    	arg0.getComponent().setBackground(Color.yellow);
+//	    	arg0.getComponent().setBackground(Color.yellow);
 	        highlightBoxes(true, 100, 360, 800, 50);
 	    }
 	}
@@ -276,7 +299,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        repaint();
 	    }
 	}
-
 
 
 	@Override
