@@ -25,15 +25,15 @@ public class Wand{
 	
 	//constructor (default)
 	public Wand() {
-		forward 	= getImage("/imgs/"+"Wand.png"); //load the image for Tree
+		forward 	= getImage("Wand.png"); //load the image for Tree
 
 		//alter these
-		width = 15;		//this is for the hit box
-		height = 10;
+		width = 20;		//this is for the hit box
+		height = 20;
 		
 //		//top left location of image
-		x = 200;
-		y = 200;
+		x = 400;
+		y = 400;
 		
 //		
 		vx = 0;
@@ -118,8 +118,6 @@ public class Wand{
 		
 		x		+= vx;
 		y		+= vy;	
-		
-		//if the object leaves the right side
 		
 		
 		init(x,y);

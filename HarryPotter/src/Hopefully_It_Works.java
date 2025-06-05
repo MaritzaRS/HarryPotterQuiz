@@ -32,7 +32,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	ArrayList<String> chosenAnswers = new ArrayList<>();
 
 	//Wand wand = new Wand(200, 200);
-	
+	Wand wand = new Wand();
 	/*
 	 * Notes:
 	 * The mouseListener method looks like it has a delay in actually clicking 
@@ -109,15 +109,44 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        
 	    } else {
 	        g.setFont(new Font("Cursive", Font.BOLD, 30));
-	        g.setColor(Color.MAGENTA);
+	        g.setColor(Color.black);
 	        g.drawString("Quiz Complete!", 100, 100);
 	        
 	        int total = hScore + gScore + rScore + sScore;
+	        
+//			wand.paint(g);
+			
 	        if (total > 0) {
-	            g.drawString("Hufflepuff: " + (hScore * 100 / total) + "%", 100, 150);
-	            g.drawString("Gryffindor: " + (gScore * 100 / total) + "%", 100, 200);
-	            g.drawString("Ravenclaw: " + (rScore * 100 / total) + "%", 100, 250);
-	            g.drawString("Slytherin: " + (sScore * 100 / total) + "%", 100, 300);
+	        	
+	        	int H = hScore * 100 / total;
+	        	int G = gScore * 100 / total;
+	        	int R = rScore * 100 / total;
+	        	int S = sScore * 100 / total;
+	        	
+	        	
+	        	if (H < G && H > R && H > G) {
+	        		Hufflepuff hu = new Hufflepuff();
+	        		g.setColor(hu.getSecondary());
+	        		g.drawString("HUFFLEPUFF", 100, 400);
+	        	} else if (G > H && G > R && G> S) {
+	        		Gryffindor gr = new Gryffindor();
+	        		g.setColor(gr.getG());
+	        		g.drawString("GRYFFINDOR", 100, 400);
+	        	} else if (R > G && R > S && R > H) {
+	        		Ravenclaw ra = new Ravenclaw();
+	        		g.setColor(ra.getR());
+	        		g.drawString("RAVENCLAW", 100, 400);
+	        	} else if (S > G && S > H && S > R) {
+	        		Slytherin sl = new Slytherin();
+	        		g.setColor(sl.getS());
+	        		g.drawString("Slytherin", 100, 400);
+	        	}
+	        	
+	            g.drawString("Hufflepuff: " + H + "%", 100, 150);
+	            g.drawString("Gryffindor: " + G + "%", 100, 200);
+	            g.drawString("Ravenclaw: " + R + "%", 100, 250);
+	            g.drawString("Slytherin: " + S + "%", 100, 300);
+	            
 	        }
 	    }
 	}
@@ -142,8 +171,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		
 		
 		questionList = new ArrayList<Question>();
-		//answerList = new ArrayList<String>();
-		
 		
 		//initialize questions 20, 5 points each
 		questionList.add(new Question("What is the result you are hoping for?", "Hufflepuff","Gryffindor","Ravenclaw","Slytherin"));
