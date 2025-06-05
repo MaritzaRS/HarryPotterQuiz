@@ -350,6 +350,5 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		// TODO Auto-generated method stub
 		
 	}
-	
 
 }
