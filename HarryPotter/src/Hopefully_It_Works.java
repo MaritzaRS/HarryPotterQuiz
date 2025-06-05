@@ -32,7 +32,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	ArrayList<String> chosenAnswers = new ArrayList<>();
 
 	//Wand wand = new Wand(200, 200);
-	Wand wand = new Wand();
+//	Wand wand = new Wand();
 	/*
 	 * Notes:
 	 * The mouseListener method looks like it has a delay in actually clicking 
@@ -127,19 +127,19 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        	if (H < G && H > R && H > G) {
 	        		Hufflepuff hu = new Hufflepuff();
 	        		g.setColor(hu.getSecondary());
-	        		g.drawString("HUFFLEPUFF", 100, 400);
+	        		g.drawString("HUFFLEPUFF!!!", 100, 400);
 	        	} else if (G > H && G > R && G> S) {
 	        		Gryffindor gr = new Gryffindor();
 	        		g.setColor(gr.getG());
-	        		g.drawString("GRYFFINDOR", 100, 400);
+	        		g.drawString("GRYFFINDOR!!!", 100, 400);
 	        	} else if (R > G && R > S && R > H) {
 	        		Ravenclaw ra = new Ravenclaw();
 	        		g.setColor(ra.getR());
-	        		g.drawString("RAVENCLAW", 100, 400);
+	        		g.drawString("RAVENCLAW!!!", 100, 400);
 	        	} else if (S > G && S > H && S > R) {
 	        		Slytherin sl = new Slytherin();
 	        		g.setColor(sl.getS());
-	        		g.drawString("Slytherin", 100, 400);
+	        		g.drawString("Slytherin!!!", 100, 400);
 	        	}
 	        	
 	            g.drawString("Hufflepuff: " + H + "%", 100, 150);
@@ -256,15 +256,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	}
 	
-	public boolean highlightBoxes(boolean temp, int x, int y, int w, int h) {
-		/*
-		 * Intended to help the mouseEntered and mouseExited methods to highlight 
-		 * the intended answer. Not working properly, and cannot problem 
-		 * solve to save my life
-		 */
-		return temp;
-	}
-	
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
@@ -274,20 +265,20 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		boolean temp = false;
-	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
-//	    	arg0.getButton();
-	        highlightBoxes(true, 100, 150, 800, 50);
-	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
-//	    	arg0.;
-	        highlightBoxes(true, 100, 220, 800, 50);
-	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
-//	    	arg0.getComponent().setBackground(Color.yellow);
-	        highlightBoxes(true, 100, 290, 800, 50);
-	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
-//	    	arg0.getComponent().setBackground(Color.yellow);
-	        highlightBoxes(true, 100, 360, 800, 50);
-	    }
+//		boolean temp = false;
+//	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
+////	    	arg0.getButton();
+//	        highlightBoxes(true, 100, 150, 800, 50);
+//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
+////	    	arg0.;
+//	        highlightBoxes(true, 100, 220, 800, 50);
+//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
+////	    	arg0.getComponent().setBackground(Color.yellow);
+//	        highlightBoxes(true, 100, 290, 800, 50);
+//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
+////	    	arg0.getComponent().setBackground(Color.yellow);
+//	        highlightBoxes(true, 100, 360, 800, 50);
+//	    }
 	}
 
 	@Override
@@ -306,16 +297,16 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	    Question q = questionList.get(currentQuestionIndex);
 	    String selected = "";
 
-	    if (isInBox(mx, my, 100, 150, 800, 50)) {
+	    if (isInBox(mx, my, 100, 170, 800, 75)) {
 	        hScore++;
 	        selected = "Hufflepuff";
-	    } else if (isInBox(mx, my, 100, 220, 800, 50)) {
+	    } else if (isInBox(mx, my, 100, 240, 800, 75)) {
 	        gScore++;
 	        selected = "Gryffindor";
-	    } else if (isInBox(mx, my, 100, 290, 800, 50)) {
+	    } else if (isInBox(mx, my, 100, 310, 800, 75)) {
 	        rScore++;
 	        selected = "Ravenclaw";
-	    } else if (isInBox(mx, my, 100, 360, 800, 50)) {
+	    } else if (isInBox(mx, my, 100, 380, 800, 75)) {
 	        sScore++;
 	        selected = "Slytherin";
 	    }
