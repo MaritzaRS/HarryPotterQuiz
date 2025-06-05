@@ -59,10 +59,10 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	    if (currentQuestionIndex < questionList.size()) {
 	        Question q = questionList.get(currentQuestionIndex);
 	        
-	        g.setFont(new Font("Arial", Font.BOLD, 20));
+	        g.setFont(new Font("Arial", Font.BOLD, 10));
 	        g.drawString("Question " + (currentQuestionIndex + 1) + " of " + questionList.size(), 100, 70);
 	        
-	        g.setFont(new Font("Arial", Font.PLAIN, 24));
+	        g.setFont(new Font("Arial", Font.PLAIN, 14));
 	        g.drawString(q.getQuestion(), 100, 120);
 
 	        g.drawRect(100, 150, 800, 50);
@@ -249,17 +249,19 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 
 	    Question q = questionList.get(currentQuestionIndex);
 	    String selected = "";
+	    
+	   
 
-	    if (isInBox(mx, my, 100, 150, 800, 50)) {
+	    if (isInBox(mx, my, 100, 150, 800, 75)) {
 	        hScore++;
 	        selected = "Hufflepuff";
-	    } else if (isInBox(mx, my, 100, 220, 800, 50)) {
+	    } else if (isInBox(mx, my, 100, 220, 800, 75)) {
 	        gScore++;
 	        selected = "Gryffindor";
-	    } else if (isInBox(mx, my, 100, 290, 800, 50)) {
+	    } else if (isInBox(mx, my, 100, 290, 800, 75)) {
 	        rScore++;
 	        selected = "Ravenclaw";
-	    } else if (isInBox(mx, my, 100, 360, 800, 50)) {
+	    } else if (isInBox(mx, my, 100, 380, 800, 100)) {
 	        sScore++;
 	        selected = "Slytherin";
 	    }
