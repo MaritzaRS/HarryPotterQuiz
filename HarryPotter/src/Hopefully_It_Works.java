@@ -342,7 +342,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	@Override
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
