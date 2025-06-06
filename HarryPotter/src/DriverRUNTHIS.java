@@ -1,3 +1,4 @@
+// importing necessary classes for graphics, events, timing, etc
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,55 +19,57 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+// main class that runs the quiz game
+// it extends JPanel for drawing and implements listeners for mouse, keyboard, and timer events
 public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	
+	// fonts used to draw text on screen
 	Font timeFont = new Font("Courier", Font.BOLD, 70);
 	Font myFont = new Font("Courier", Font.BOLD, 40);
+	
+	// keeps track of which question is being shown
 	int currentQuestionIndex = 0;
+	
+	// stores the answers the user selects
 	ArrayList<String> chosenAnswers = new ArrayList<>();
 
-	//initalize variables
-	private static ArrayList<Question> questionList;
-	private static int hScore;
-	private static int gScore;
-	private static int rScore;
-	private static int sScore;
-	private boolean showHitboxes = false;
-	
-	
-	//frame width/height
+	// global variables for tracking scores and state
+	private static ArrayList<Question> questionList; // stores all quiz questions
+	private static int hScore; // hufflepuff score
+	private static int gScore; // gryffindor score
+	private static int rScore; // ravenclaw score
+	private static int sScore; // slytherin score
+	private boolean showHitboxes = false; // toggle to show or hide hitboxes
+
+	// screen size constants
 	static int width = 1200;
 	static int height = 800;	
 	
 
+	// paint method draws the entire game screen
 	public void paint(Graphics g) {
-	    super.paintComponent(g);
+	    super.paintComponent(g); // clears the screen
 	    
-
-	    //paint questions on screen
+	    // if there are still questions to display
 	    if (currentQuestionIndex < questionList.size()) {
-	        Question q = questionList.get(currentQuestionIndex);
+	        Question q = questionList.get(currentQuestionIndex); // get current question
 	        
+	        // draw question number
 	        g.setFont(new Font("Cambria", Font.BOLD, 20));
 	        g.drawString("Question " + (currentQuestionIndex + 1) + " of " + questionList.size(), 100, 70);
 	        
 	        g.setFont(new Font("Cambria", Font.PLAIN, 24));
 	        
+	        // break long questions into two lines if needed
 	        if (q.getQuestion().length() < 85) {
-	        	
 		        g.drawString(q.getQuestion(), 100, 120);
-		        
 	        } else {
 	        	if (q.getQuestion().substring(85, 86).equals(" ")) {
-
 		        	g.drawString(q.getQuestion().substring(0, 85), 100, 120);
 		        	g.drawString(q.getQuestion().substring(86, q.getQuestion().length()), 100, 150);
-		        	
 	        	} else {
 	        		for (int i = 85; i < q.getQuestion().length(); i++) {
 	        			if (q.getQuestion().substring(i, i+1).equals(" ")) {
-	        				
 	        				g.drawString(q.getQuestion().substring(0, i), 100, 120);
 	        				g.drawString(q.getQuestion().substring(i+1, q.getQuestion().length()), 100, 150);
 	        				break;
@@ -75,10 +78,9 @@ public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListen
 	        	}
 	        }
 	        
-	        //paint the answers
+	        // draw the answer boxes and answer text
 	        g.drawRect(100, 170, 800, 50);
 	        g.drawString(q.getHuffAnswer(), 110, 205);
-	        
 	        
 	        g.drawRect(100, 240, 800, 50);
 	        g.drawString(q.getGryffAnswer(), 110, 275);
@@ -89,29 +91,27 @@ public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListen
 	        g.drawRect(100, 380, 800, 50);
 	        g.drawString(q.getSlythAnswer(), 110, 415);
 	        
-	        
 	    } else {
+	    	// once all questions are done, display result
 	        g.setFont(new Font("Cursive", Font.BOLD, 30));
 	        g.setColor(Color.black);
 	        g.drawString("Quiz Complete!", 100, 100);
 	        
-	        int total = hScore + gScore + rScore + sScore;
+	        int total = hScore + gScore + rScore + sScore; // calculate total score
 	        
-
-			//calculate score
+	        // calculate percentage of each house and display result
 	        if (total > 0) {
-	        	
 	        	int H = hScore * 100 / total;
 	        	int G = gScore * 100 / total;
 	        	int R = rScore * 100 / total;
 	        	int S = sScore * 100 / total;
 	        	
-	        	
+	        	// determine top house and draw result text with house color
 	        	if (H < G && H > R && H > G) {
 	        		Hufflepuff hu = new Hufflepuff();
 	        		g.setColor(hu.getSecondary());
 	        		g.drawString("HUFFLEPUFF!!!", 100, 400);
-	        	} else if (G > H && G > R && G> S) {
+	        	} else if (G > H && G > R && G > S) {
 	        		Gryffindor gr = new Gryffindor();
 	        		g.setColor(gr.getG());
 	        		g.drawString("GRYFFINDOR!!!", 100, 400);
@@ -125,38 +125,40 @@ public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListen
 	        		g.drawString("Slytherin!!!", 100, 400);
 	        	}
 	        	
+	        	// draw all house percentages
 	            g.drawString("Hufflepuff: " + H + "%", 100, 150);
 	            g.drawString("Gryffindor: " + G + "%", 100, 200);
 	            g.drawString("Ravenclaw: " + R + "%", 100, 250);
 	            g.drawString("Slytherin: " + S + "%", 100, 300);
-	            
 	        }
 	    }
 	}
 
-	//hitboxes
+	// helper method that checks if a point is inside a rectangle
 	private boolean isInBox(int mx, int my, int x, int y, int w, int h) {
 	    return mx >= x && mx <= x + w && my >= y && my <= y + h;
 	}
 	
+	// main method starts the program
 	public static void main(String[] arg) {
 		DriverRUNTHIS f = new DriverRUNTHIS();
-		
 	}
 	
+	// constructor sets up the frame and initializes everything
 	public DriverRUNTHIS() {
-		JFrame f = new JFrame("Harry Potter Quiz");
-		f.setSize(new Dimension(width, height));
-		f.setBackground(Color.white);
-		f.add(this);
-		f.setResizable(false);
- 		f.addMouseListener(this);
-		f.addKeyListener(this);
+		JFrame f = new JFrame("Harry Potter Quiz"); // create frame
+		f.setSize(new Dimension(width, height)); // set frame size
+		f.setBackground(Color.white); // background color
+		f.add(this); // add this panel to the frame
+		f.setResizable(false); // disable resizing
+ 		f.addMouseListener(this); // enable mouse input
+		f.addKeyListener(this); // enable keyboard input
 		
-		
+		// initialize the question list
 		questionList = new ArrayList<Question>();
 		
-		//initialize questions 20, 5 points each
+		// add all quiz questions to the list
+		// each question takes four answers in hufflepuff, gryffindor, ravenclaw, slytherin order
 		questionList.add(new Question("What is the result you are hoping for?", "Hufflepuff","Gryffindor","Ravenclaw","Slytherin"));
 		
 		questionList.add(new Question("If a classmate cheats on a test and tells you about it, what would you do?", "Do nothing",
@@ -220,56 +222,36 @@ public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListen
 		questionList.add(new Question("If you could master one magical subject, which would it be?", "Transfiguration", "Duelling", "Ancient Runes", "Potions"));
 		
 
+		// start game loop using timer that updates screen every ~16 ms
 		Timer t = new Timer(16, this);
 		t.start();
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.setVisible(true);
-	
-
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // close on exit
+		f.setVisible(true); // show the frame
 	}
 	
 	
+	// not used
 	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseClicked(MouseEvent arg0) {}
 
 	@Override
-	public void mouseEntered(MouseEvent arg0) {
-//		boolean temp = false;
-//	    if (isInBox(arg0.getX(), arg0.getY(), 100, 150, 800, 50)) {
-////	    	arg0.getButton();
-//	        highlightBoxes(true, 100, 150, 800, 50);
-//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 220, 800, 50)) {
-////	    	arg0.;
-//	        highlightBoxes(true, 100, 220, 800, 50);
-//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 290, 800, 50)) {
-////	    	arg0.getComponent().setBackground(Color.yellow);
-//	        highlightBoxes(true, 100, 290, 800, 50);
-//	    } else if (isInBox(arg0.getX(), arg0.getY(), 100, 360, 800, 50)) {
-////	    	arg0.getComponent().setBackground(Color.yellow);
-//	        highlightBoxes(true, 100, 360, 800, 50);
-//	    }
-	}
+	public void mouseEntered(MouseEvent arg0) {}
 
 	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseExited(MouseEvent arg0) {}
 
-	//hitboxes
+	// handles clicking on an answer
 	@Override
 	public void mousePressed(MouseEvent m) {
-	    int mx = m.getX();
-	    int my = m.getY();
+	    int mx = m.getX(); // x coordinate of click
+	    int my = m.getY(); // y coordinate of click
 
-	    if (currentQuestionIndex >= questionList.size()) return;
+	    if (currentQuestionIndex >= questionList.size()) return; // do nothing if quiz is done
 
 	    Question q = questionList.get(currentQuestionIndex);
 	    String selected = "";
 
+	    // check which box was clicked and update score
 	    if (isInBox(mx, my, 100, 170, 800, 75)) {
 	        hScore++;
 	        selected = "Hufflepuff";
@@ -284,6 +266,7 @@ public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListen
 	        selected = "Slytherin";
 	    }
 
+	    // if a valid answer was clicked, save it and go to next question
 	    if (!selected.equals("")) {
 	        chosenAnswers.add(selected);
 	        currentQuestionIndex++;
@@ -291,36 +274,29 @@ public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListen
 	    }
 	}
 
-
+	// not used
 	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		
-		
-	}
+	public void mouseReleased(MouseEvent arg0) {}
 
+	// called automatically by timer every 16 ms to repaint the screen
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		repaint();
 	}
 
+	// toggles hitbox visibility when f1 key is pressed
 	@Override
 	public void keyPressed(KeyEvent e) {
 	    if (e.getKeyCode() == KeyEvent.VK_F1) {
 	        showHitboxes = !showHitboxes;
-	        repaint(); // refresh the screen to show/hide hitboxes
+	        repaint();
 	    }
 	}
 
 	@Override
-	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-	}
+	public void keyReleased(KeyEvent arg0) {}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void keyTyped(KeyEvent arg0) {}
 
 }
