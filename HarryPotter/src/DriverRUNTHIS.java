@@ -18,38 +18,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class Hopefully_It_Works extends JPanel implements ActionListener, MouseListener, KeyListener {
+public class DriverRUNTHIS extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
-	//Timer related variables
-	int waveTimer = 5; //each wave of enemies is 20s
-	long ellapseTime = 0;
+	
 	Font timeFont = new Font("Courier", Font.BOLD, 70);
-	int level = 0;
-	int score1 = 0;
 	Font myFont = new Font("Courier", Font.BOLD, 40);
-	
 	int currentQuestionIndex = 0;
 	ArrayList<String> chosenAnswers = new ArrayList<>();
 
-	//Wand wand = new Wand(200, 200);
-//	Wand wand = new Wand();
-	/*
-	 * Notes:
-	 * The mouseListener method looks like it has a delay in actually clicking 
-	 * on an answer. It takes about two to ten clicks for me to answer a question.
-	 * Also, need to figure out a way to actually get some images on to the screen
-	 * 
-	 */
-	
+	//initalize variables
 	private static ArrayList<Question> questionList;
-	//private static ArrayList<String> answerList;
 	private static int hScore;
 	private static int gScore;
 	private static int rScore;
 	private static int sScore;
 	private boolean showHitboxes = false;
 	
-//	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
 	
 	//frame width/height
 	static int width = 1200;
@@ -59,8 +43,8 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	public void paint(Graphics g) {
 	    super.paintComponent(g);
 	    
-//	    wand.paint(g);
 
+	    //paint questions on screen
 	    if (currentQuestionIndex < questionList.size()) {
 	        Question q = questionList.get(currentQuestionIndex);
 	        
@@ -91,6 +75,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        	}
 	        }
 	        
+	        //paint the answers
 	        g.drawRect(100, 170, 800, 50);
 	        g.drawString(q.getHuffAnswer(), 110, 205);
 	        
@@ -112,8 +97,8 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	        
 	        int total = hScore + gScore + rScore + sScore;
 	        
-//			wand.paint(g);
-			
+
+			//calculate score
 	        if (total > 0) {
 	        	
 	        	int H = hScore * 100 / total;
@@ -149,16 +134,17 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	    }
 	}
 
+	//hitboxes
 	private boolean isInBox(int mx, int my, int x, int y, int w, int h) {
 	    return mx >= x && mx <= x + w && my >= y && my <= y + h;
 	}
 	
 	public static void main(String[] arg) {
-		Hopefully_It_Works f = new Hopefully_It_Works();
+		DriverRUNTHIS f = new DriverRUNTHIS();
 		
 	}
 	
-	public Hopefully_It_Works() {
+	public DriverRUNTHIS() {
 		JFrame f = new JFrame("Harry Potter Quiz");
 		f.setSize(new Dimension(width, height));
 		f.setBackground(Color.white);
@@ -233,19 +219,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		
 		questionList.add(new Question("If you could master one magical subject, which would it be?", "Transfiguration", "Duelling", "Ancient Runes", "Potions"));
 		
-		//debug toString();
-		//System.out.println(questionList.get(0).toString());
-		
-		/*
-		 * I moved the display of the questions to the paint method.
-		 */
-		
-		//the cursor image must be outside of the src folder
-		//you will need to import a couple of classes to make it fully 
-		//functional! use eclipse quick-fixes
 
-		
-		
 		Timer t = new Timer(16, this);
 		t.start();
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -285,6 +259,7 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 		
 	}
 
+	//hitboxes
 	@Override
 	public void mousePressed(MouseEvent m) {
 	    int mx = m.getX();
