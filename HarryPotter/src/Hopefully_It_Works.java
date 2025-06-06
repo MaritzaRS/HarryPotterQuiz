@@ -48,8 +48,6 @@ public class Hopefully_It_Works extends JPanel implements ActionListener, MouseL
 	private static int rScore;
 	private static int sScore;
 	private boolean showHitboxes = false;
-
-	
 	
 //	SimpleAudioPlayer backgroundMusic = new SimpleAudioPlayer("Epic.wav", true);
 	
